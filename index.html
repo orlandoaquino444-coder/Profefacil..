@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#76543b">
+<title>ProfeFácil</title>
+<style>
+:root{--c:#76543b;--c2:#a9825f;--bg:#f5f2ed;--panel:#fff;--text:#29251f;--muted:#766e65;--line:#e5ddd3;--red:#b63832;--green:#287653}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:10px 13px;background:var(--c);color:white;font-weight:650}button:hover{opacity:.9}.secondary{background:#eee5dc;color:var(--text)}.danger{background:var(--red)}.small{padding:6px 9px;font-size:12px}.hidden{display:none!important}.muted{color:var(--muted)}.error{color:var(--red);white-space:pre-wrap;font-size:13px}.brand{font-size:23px;font-weight:850;color:var(--c);display:flex;align-items:center;gap:10px}.mark{background:var(--c);color:white;padding:9px 12px;border-radius:12px}.auth{min-height:100vh;display:grid;place-items:center;padding:18px;background:linear-gradient(130deg,#e9ddcf,#faf8f4)}.authbox{background:white;padding:26px;border-radius:20px;width:min(440px,100%);box-shadow:0 8px 30px #0001}.field{display:flex;flex-direction:column;gap:5px;margin:11px 0}.field label{font-size:13px;font-weight:700;color:#62574d}.field input,.field select,.field textarea,input.search{width:100%;padding:10px;border:1px solid #d9cec2;border-radius:9px;background:white;color:var(--text)}textarea{min-height:80px;resize:vertical}.authbuttons{display:flex;gap:8px}.authbuttons button{flex:1}.top{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.topinner{max-width:1450px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px}.user{display:flex;align-items:center;gap:9px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e8d6c3;color:var(--c);font-weight:800}.layout{max-width:1450px;margin:auto;padding:18px;display:grid;grid-template-columns:225px minmax(0,1fr);gap:18px}.sidebar{background:white;border:1px solid var(--line);border-radius:14px;padding:8px;height:max-content;position:sticky;top:82px}.nav{width:100%;text-align:left;background:transparent;color:#50463c;display:flex;gap:9px;margin:2px 0}.nav.active,.nav:hover{background:#eee5db;color:var(--c)}.main{min-width:0}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:4px 0 17px}.head h1{margin:0 0 5px;font-size:27px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:15px;min-width:0;box-shadow:0 5px 18px #30201008}.stat{font-size:30px;font-weight:850;margin:6px 0}.label{font-size:13px;color:var(--muted)}.section{margin-top:15px}.section h2,.card h2{font-size:17px;margin:0 0 12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.search{max-width:380px;flex:1}.tablewrap{overflow:auto}.data{width:100%;border-collapse:collapse;font-size:13px}.data th,.data td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.data th{font-size:11px;color:var(--muted);text-transform:uppercase}.actions{display:flex;gap:5px;flex-wrap:wrap}.pill{display:inline-block;padding:4px 8px;border-radius:20px;background:#eee5dc;font-size:11px;font-weight:700}.green{background:#dff2e7;color:#216644}.redpill{background:#f8e1df;color:#9e2f29}.empty{text-align:center;padding:25px;color:var(--muted)}.notice{background:#f3e9dd;border-radius:10px;padding:12px;margin:12px 0;font-size:13px}.mobile{display:none;overflow:auto;background:white;border-bottom:1px solid var(--line);padding:7px;gap:4px}.mobile .nav{white-space:nowrap;width:auto}.backdrop{position:fixed;inset:0;background:#17120db0;z-index:20;display:grid;place-items:center;padding:14px}.modal{width:min(680px,100%);max-height:92vh;overflow:auto;background:white;border-radius:16px;padding:19px}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}.modalgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.modalfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#29251f;color:white;border-radius:10px;padding:12px 15px;z-index:40;max-width:90vw}.foot{font-size:12px;color:var(--muted);line-height:1.5;margin:17px 0}.bar{height:8px;background:#eee5dc;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;background:var(--c2)}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:12px}.sidebar{display:none}.mobile{display:flex}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topinner{padding:10px 12px}}
+@media(max-width:560px){.two,.modalgrid{grid-template-columns:1fr}.head{flex-direction:column}.head button{width:100%}.head h1{font-size:23px}.grid{gap:8px}.card{padding:11px}.stat{font-size:25px}.email{display:none}.brand{font-size:19px}}
+</style>
+</head>
+<body>
+<section id="auth" class="auth">
+<div class="authbox">
+<div class="brand"><span class="mark">PF</span> ProfeFácil</div>
+<h1 id="authTitle">Bienvenido/a</h1>
+<p class="muted">Tu espacio de organización docente.</p>
+<form id="authForm">
+<div class="field"><label>Correo electrónico</label><input id="email" type="email" required autocomplete="email" placeholder="docente@correo.com"></div>
+<div class="field"><label>Contraseña</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></div>
+<div id="nameField" class="field hidden"><label>Nombre del docente</label><input id="displayName" maxlength="70" placeholder="Tu nombre"></div>
+<div id="authError" class="error"></div>
+<div class="authbuttons"><button id="authSubmit">Iniciar sesión</button><button type="button" class="secondary" id="toggleAuth">Crear cuenta</button></div>
+</form>
+<p class="foot">Usa una contraseña segura. Tus datos de Firestore están separados por cuenta.</p>
+</div>
+</section>
+<section id="application" class="hidden">
+<header class="top"><div class="topinner">
+<div class="brand"><span class="mark">PF</span> ProfeFácil</div>
+<div class="user"><div id="avatar" class="avatar">P</div><div><strong id="userName">Docente</strong><div id="userEmail" class="muted email" style="font-size:12px"></div></div><button id="logout" class="secondary small">Salir</button></div>
+</div></header>
+<nav id="mobileNav" class="mobile"></nav>
+<div class="layout"><aside id="sidebar" class="sidebar"></aside><main id="content" class="main"></main></div>
+</section>
+<div id="modalRoot"></div><div id="toastRoot"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+'use strict';
+
+/* CONFIGURACIÓN DEL PROYECTO FIREBASE */
+const firebaseConfig={
+ apiKey:"AIzaSyBtnzA8Uf5iomh_r9LRuymIVs6zE7_DCqg",
+ authDomain:"profefacil-9318a.firebaseapp.com",
+ projectId:"profefacil-9318a",
+ storageBucket:"profefacil-9318a.firebasestorage.app",
+ messagingSenderId:"830708638867",
+ appId:"1:830708638867:web:9367c43be799372e185966",
+ measurementId:"G-19V3G8BTJQ"
+};
+const $=id=>document.getElementById(id);
+let auth,db,user=null,registerMode=false,page='dashboard',profile={};
+const keys=['students','courses','tasks','grades','attendance','calendar','exams','library','plans','notes','messages'];
+const dbdata=Object.fromEntries(keys.map(k=>[k,[]]));
+const names={students:'Estudiantes',courses:'Cursos y materias',tasks:'Tareas y trabajos',grades:'Calificaciones',attendance:'Asistencia',calendar:'Agenda',exams:'Exámenes',library:'Biblioteca educativa',plans:'Planificación de clases',notes:'Seguimiento y observaciones',messages:'Mensajes personales'};
+const nav=[
+ ['dashboard','⌂','Panel principal'],['students','♙','Estudiantes'],['courses','▤','Cursos'],
+ ['tasks','✓','Tareas'],['grades','★','Calificaciones'],['attendance','◷','Asistencia'],
+ ['calendar','▦','Agenda'],['exams','✎','Exámenes'],['library','▣','Biblioteca'],
+ ['plans','▧','Planificación'],['notes','☷','Observaciones'],['messages','✉','Notas personales'],
+ ['reports','▥','Informes'],['tools','⚙','Herramientas']
+];
+const schema={
+ students:{title:'Estudiante',fields:[['name','Nombre completo','text',1],['code','Código o documento','text'],['courseId','Curso','course'],['email','Correo','email'],['phone','Teléfono','tel'],['guardian','Responsable o familiar','text'],['birthDate','Fecha de nacimiento','date'],['notes','Observaciones','textarea']]},
+ courses:{title:'Curso o materia',fields:[['name','Nombre','text',1],['level','Grado o nivel','text'],['section','Sección','text'],['year','Año lectivo','number'],['schedule','Horario','text'],['description','Descripción','textarea']]},
+ tasks:{title:'Tarea',fields:[['title','Título','text',1],['courseId','Curso','course'],['dueDate','Fecha de entrega','date'],['priority','Prioridad','select:Normal,Importante,Urgente'],['points','Puntaje máximo','number'],['status','Estado','select:Pendiente,En curso,Corregida'],['instructions','Instrucciones','textarea'],['resourceUrl','Enlace a recursos','url']]},
+ grades:{title:'Calificación',fields:[['studentId','Estudiante','student',1],['courseId','Curso','course'],['title','Evaluación','text',1],['score','Nota obtenida','number',1],['maxScore','Nota máxima','number',1],['date','Fecha','date'],['comments','Comentarios','textarea']]},
+ attendance:{title:'Asistencia',fields:[['studentId','Estudiante','student',1],['courseId','Curso','course'],['date','Fecha','date',1],['status','Estado','select:Presente,Ausente,Tardanza,Justificado',1],['notes','Observaciones','textarea']]},
+ calendar:{title:'Evento de agenda',fields:[['title','Título','text',1],['date','Fecha','date',1],['time','Hora','time'],['kind','Tipo','select:Clase,Examen,Entrega,Reunión,Recordatorio,Otro'],['courseId','Curso','course'],['details','Detalles','textarea']]},
+ exams:{title:'Examen',fields:[['title','Título','text',1],['courseId','Curso','course'],['date','Fecha','date'],['duration','Duración en minutos','number'],['points','Puntaje máximo','number'],['topics','Temas','textarea'],['questions','Consignas','textarea']]},
+ library:{title:'Material educativo',fields:[['title','Título','text',1],['courseId','Curso','course'],['kind','Tipo','select:Apunte,Enlace,Video,Libro,Actividad,Otro'],['url','Enlace web','url'],['description','Descripción','textarea']]},
+ plans:{title:'Planificación de clase',fields:[['title','Título de la clase','text',1],['courseId','Curso','course'],['date','Fecha','date'],['objectives','Objetivos','textarea'],['activities','Actividades','textarea'],['materials','Materiales','textarea'],['evaluation','Evaluación','textarea'],['reflection','Reflexión docente','textarea']]},
+ notes:{title:'Observación del estudiante',fields:[['studentId','Estudiante','student',1],['date','Fecha','date'],['kind','Categoría','select:Participación,Conducta,Progreso,Dificultad,Logro,Otro'],['description','Observación','textarea',1],['followup','Seguimiento necesario','select:No,Sí,En curso']]},
+ messages:{title:'Nota personal',fields:[['title','Asunto','text',1],['date','Fecha','date'],['category','Categoría','select:Personal,Trabajo,Recordatorio,Reunión'],['body','Contenido','textarea',1]]}
+};
+const today=()=>new Date().toISOString().slice(0,10);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toastRoot').innerHTML='<div class="toast">'+esc(s)+'</div>';setTimeout(()=>$('toastRoot').innerHTML='',3500)}
+function errorText(e){const m={'auth/email-already-in-use':'Ese correo ya está registrado.','auth/invalid-email':'El correo no es válido.','auth/weak-password':'La contraseña debe tener al menos 6 caracteres.','auth/invalid-credential':'Correo o contraseña incorrectos.','auth/user-not-found':'No se encontró esa cuenta.','auth/wrong-password':'Contraseña incorrecta.','auth/too-many-requests':'Demasiados intentos. Espera un momento.','permission-denied':'Firebase denegó el acceso. Revisa las reglas de Firestore.'};return m[e.code]||e.message||'Error desconocido.'}
+function setRegister(on){registerMode=on;$('authTitle').textContent=on?'Crear cuenta docente':'Bienvenido/a';$('nameField').classList.toggle('hidden',!on);$('authSubmit').textContent=on?'Registrarme':'Iniciar sesión';$('toggleAuth').textContent=on?'Ya tengo cuenta':'Crear cuenta';$('authError').textContent=''}
+$('toggleAuth').onclick=()=>setRegister(!registerMode);
+$('authForm').onsubmit=async e=>{e.preventDefault();$('authError').textContent='';try{const em=$('email').value.trim(),pw=$('password').value;if(registerMode){const n=$('displayName').value.trim();if(!n)throw Error('Escribe tu nombre.');const cr=await auth.createUserWithEmailAndPassword(em,pw);await cr.user.updateProfile({displayName:n});await db.collection('users').doc(cr.user.uid).set({displayName:n,email:em,createdAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}else await auth.signInWithEmailAndPassword(em,pw)}catch(e){$('authError').textContent=errorText(e)}};
+try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();auth.onAuthStateChanged(async u=>{user=u;if(!u){$('auth').classList.remove('hidden');$('application').classList.add('hidden');return} $('auth').classList.add('hidden');$('application').classList.remove('hidden');$('userName').textContent=u.displayName||u.email.split('@')[0];$('userEmail').textContent=u.email||'';$('avatar').textContent=(u.displayName||u.email||'P')[0].toUpperCase();try{const p=await db.collection('users').doc(u.uid).get();profile=p.data()||{};if(profile.displayName)$('userName').textContent=profile.displayName}catch(e){toast(errorText(e))}buildNav();await loadData();render()})}catch(e){$('authError').textContent='No se pudo iniciar Firebase. Comprueba la conexión.'}
+$('logout').onclick=()=>auth.signOut();
+function col(k){return db.collection('users').doc(user.uid).collection(k)}
+async function loadData(){if(!user)return;for(const k of keys){try{const s=await col(k).orderBy('createdAt','desc').get();dbdata[k]=s.docs.map(d=>({id:d.id,...d.data()}))}catch(e){try{const s=await col(k).get();dbdata[k]=s.docs.map(d=>({id:d.id,...d.data()}))}catch(err){dbdata[k]=[];console.error(k,err)}}}}
+function buildNav(){const h=nav.map(([id,ic,n])=>`<button class="nav ${page===id?'active':''}" data-page="${id}"><span>${ic}</span>${n}</button>`).join('');$('sidebar').innerHTML=h;$('mobileNav').innerHTML=h;document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{page=b.dataset.page;buildNav();render()})}
+function findName(k,id){const x=(dbdata[k]||[]).find(o=>o.id===id);return x?.name||x?.title||'—'}
+function stat(t,v,sub=''){return `<div class="card"><div class="label">${t}</div><div class="stat">${v}</div><div class="label">${sub}</div></div>`}
+function head(t,d,btn=''){return `<div class="head"><div><h1>${t}</h1><div class="muted">${d}</div></div>${btn}</div>`}
+function records(k){return dbdata[k]||[]}
+function rowsFor(k){return records(k).map(o=>{let a=[];switch(k){
+case 'students':a=[esc(o.name),esc(o.code||'—'),esc(findName('courses',o.courseId)),esc(o.email||'—'),esc(o.phone||'—')];break;
+case 'courses':a=[esc(o.name),esc(o.level||'—'),esc(o.section||'—'),esc(o.year||'—'),esc(o.schedule||'—')];break;
+case 'tasks':a=[esc(o.title),esc(findName('courses',o.courseId)),esc(o.dueDate||'—'),esc(o.priority||'Normal'),esc(o.status||'Pendiente')];break;
+case 'grades':a=[esc(findName('students',o.studentId)),esc(o.title),esc(o.score)+' / '+esc(o.maxScore),esc(Number(o.maxScore)>0?(Number(o.score)/Number(o.maxScore)*10).toFixed(2):'—'),esc(o.date||'—')];break;
+case 'attendance':a=[esc(findName('students',o.studentId)),esc(o.date),`<span class="pill ${o.status==='Presente'?'green':o.status==='Ausente'?'redpill':''}">${esc(o.status)}</span>`,esc(o.notes||'—')];break;
+case 'calendar':a=[esc(o.title),esc(o.date),esc(o.time||'—'),esc(o.kind||'—'),esc(findName('courses',o.courseId))];break;
+case 'exams':a=[esc(o.title),esc(findName('courses',o.courseId)),esc(o.date||'—'),esc(o.duration||'—'),esc(o.points||'—')];break;
+case 'library':a=[esc(o.title),esc(findName('courses',o.courseId)),esc(o.kind||'—'),o.url?`<a href="${esc(o.url)}" target="_blank" rel="noopener">Abrir</a>`:'—',esc(o.description||'—')];break;
+case 'plans':a=[esc(o.title),esc(findName('courses',o.courseId)),esc(o.date||'—'),esc(o.objectives||'—'),esc(o.activities||'—')];break;
+case 'notes':a=[esc(findName('students',o.studentId)),esc(o.date||'—'),esc(o.kind||'—'),esc(o.description||''),esc(o.followup||'No')];break;
+case 'messages':a=[esc(o.title),esc(o.date||'—'),esc(o.category||'—'),esc(o.body||'')];break;
+}return {id:o.id,search:a.join(' ').replace(/<[^>]*>/g,' '),cells:a}})}
+const columns={students:['Nombre','Código','Curso','Correo','Teléfono'],courses:['Curso','Nivel','Sección','Año','Horario'],tasks:['Tarea','Curso','Entrega','Prioridad','Estado'],grades:['Estudiante','Evaluación','Nota','Sobre 10','Fecha'],attendance:['Estudiante','Fecha','Estado','Observaciones'],calendar:['Evento','Fecha','Hora','Tipo','Curso'],exams:['Examen','Curso','Fecha','Minutos','Puntaje'],library:['Material','Curso','Tipo','Enlace','Descripción'],plans:['Clase','Curso','Fecha','Objetivos','Actividades'],notes:['Estudiante','Fecha','Categoría','Observación','Seguimiento'],messages:['Asunto','Fecha','Categoría','Contenido']};
+function table(k){const list=rowsFor(k);return `<div class="card"><div class="toolbar"><input class="search" id="search" placeholder="Buscar en ${esc(names[k])}..."><button class="secondary" data-export="${k}">Exportar CSV</button></div><div class="tablewrap"><table class="data"><thead><tr>${columns[k].map(x=>`<th>${x}</th>`).join('')}<th>Acciones</th></tr></thead><tbody id="tableBody">${list.length?list.map(r=>rowHtml(k,r)).join(''):`<tr><td colspan="${columns[k].length+1}" class="empty">Todavía no hay registros. Pulsa Agregar para comenzar.</td></tr>`}</tbody></table></div></div>`}
+function rowHtml(k,r){return `<tr data-row="${r.id}">${r.cells.map(c=>`<td>${c}</td>`).join('')}<td><div class="actions"><button class="secondary small" data-edit="${k}:${r.id}">Editar</button><button class="danger small" data-del="${k}:${r.id}">Eliminar</button></div></td></tr>`}
+function average(){const a=records('grades').filter(g=>Number(g.maxScore)>0);return a.length?a.reduce((s,g)=>s+Number(g.score)/Number(g.maxScore)*10,0)/a.length:0}
+function render(){if(!user)return;let h='';
+if(page==='dashboard'){
+ const tasks=records('tasks').filter(t=>t.dueDate&&t.dueDate>=today()).sort((a,b)=>a.dueDate.localeCompare(b.dueDate)).slice(0,5);
+ const events=records('calendar').filter(t=>t.date&&t.date>=today()).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5);
+ h=head('Panel principal','Resumen de tu actividad docente')+`<div class="grid">${stat('Estudiantes',records('students').length)}${stat('Cursos',records('courses').length)}${stat('Tareas',records('tasks').length)}${stat('Promedio',average().toFixed(1)+'/10','Escala normalizada')}</div><div class="two section"><div class="card"><h2>Próximas entregas</h2>${tasks.length?tasks.map(t=>`<p><b>${esc(t.title)}</b><br><span class="label">${esc(t.dueDate)} · ${esc(findName('courses',t.courseId))}</span></p>`).join(''):'<div class="empty">No hay entregas próximas.</div>'}</div><div class="card"><h2>Próximos eventos</h2>${events.length?events.map(t=>`<p><b>${esc(t.title)}</b><br><span class="label">${esc(t.date)} ${esc(t.time||'')}</span></p>`).join(''):'<div class="empty">No hay eventos próximos.</div>'}</div></div><div class="card section"><h2>Acceso rápido</h2><div class="toolbar"><button data-add="students">＋ Estudiante</button><button data-add="tasks">＋ Tarea</button><button data-add="grades">＋ Calificación</button><button data-add="attendance">＋ Asistencia</button><button class="secondary" data-page="reports">Informes</button></div></div>`;
+}else if(schema[page])h=head(names[page],'Crear, buscar, editar y eliminar registros.',`<button data-add="${page}">＋ Agregar</button>`)+table(page);
+else if(page==='reports'){
+ const absent=records('attendance').filter(a=>a.status==='Ausente').length,late=records('attendance').filter(a=>a.status==='Tardanza').length;
+ const students=records('students').map(s=>{const gs=records('grades').filter(g=>g.studentId===s.id&&Number(g.maxScore)>0);return {s,n:gs.length,a:gs.length?gs.reduce((x,g)=>x+Number(g.score)/Number(g.maxScore)*10,0)/gs.length:null}}).sort((a,b)=>(a.a??-1)-(b.a??-1));
+ h=head('Informes y estadísticas','Resumen de rendimiento y asistencia',`<button data-backup>Descargar copia</button>`)+`<div class="grid">${stat('Asistencias',records('attendance').length)}${stat('Ausencias',absent)}${stat('Tardanzas',late)}${stat('Promedio',average().toFixed(1)+'/10')}</div><div class="card section"><h2>Promedios por estudiante</h2><div class="tablewrap"><table class="data"><thead><tr><th>Estudiante</th><th>Notas</th><th>Promedio / 10</th><th>Seguimiento</th></tr></thead><tbody>${students.length?students.map(x=>`<tr><td>${esc(x.s.name)}</td><td>${x.n}</td><td>${x.a===null?'—':x.a.toFixed(2)}</td><td>${x.a===null?'Sin notas':x.a<6?'Revisar apoyo':'En seguimiento'}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">No hay estudiantes registrados.</td></tr>'}</tbody></table></div><p class="label">La marca de apoyo es orientativa y no sustituye el criterio docente.</p></div><div class="card section"><h2>Exportaciones</h2><div class="toolbar">${keys.map(k=>`<button class="secondary" data-export="${k}">${names[k]} CSV</button>`).join('')}</div></div>`;
+}else if(page==='tools'){
+ h=head('Herramientas y copias','Respalda o recupera tus registros.')+`<div class="two"><div class="card"><h2>Copia de seguridad</h2><p class="muted">Descarga tus registros en un archivo JSON.</p><button data-backup>Descargar copia JSON</button></div><div class="card"><h2>Restaurar copia</h2><p class="muted">Agrega los registros de un archivo JSON exportado previamente.</p><input type="file" id="restoreFile" accept=".json,application/json"><button id="restore" class="secondary" style="margin-top:10px">Importar copia</button><p class="label">La importación agrega registros y puede generar duplicados si repites el proceso.</p></div></div><div class="card section"><h2>Datos de la cuenta</h2><p>Correo: ${esc(user.email)}</p><p>ID de usuario: <code>${esc(user.uid)}</code></p><button id="refreshData" class="secondary">Actualizar datos de Firestore</button></div><div class="notice">Los registros son privados de esta cuenta. Compartir información entre docentes o habilitar un portal de estudiantes requiere reglas y permisos adicionales.</div>`;
+}else h=head('ProfeFácil','Selecciona una sección.');
+$('content').innerHTML=h;wire();
+}
+function wire(){
+ document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>editor(b.dataset.add));
+ document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{const [k,id]=b.dataset.edit.split(':');editor(k,id)});
+ document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{const [k,id]=b.dataset.del.split(':');removeRecord(k,id)});
+ document.querySelectorAll('[data-export]').forEach(b=>b.onclick=()=>exportCSV(b.dataset.export));
+ document.querySelectorAll('[data-backup]').forEach(b=>b.onclick=backup);
+ document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{page=b.dataset.page;buildNav();render()});
+ const s=$('search');if(s)s.oninput=()=>{const q=s.value.toLowerCase();const list=rowsFor(page).filter(r=>r.search.toLowerCase().includes(q));$('tableBody').innerHTML=list.length?list.map(r=>rowHtml(page,r)).join(''):`<tr><td class="empty" colspan="${columns[page].length+1}">Sin resultados.</td></tr>`;wire()};
+ if($('restore'))$('restore').onclick=restore;
+ if($('refreshData'))$('refreshData').onclick=async()=>{await loadData();render();toast('Datos actualizados.')};
+}
+function fieldHTML(f,v){const [k,label,type,req]=f;let c='';
+ if(type==='course')c=`<select name="${k}"><option value="">Sin asignar</option>${records('courses').map(x=>`<option value="${x.id}" ${v===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`;
+ else if(type==='student')c=`<select name="${k}" ${req?'required':''}><option value="">Seleccionar estudiante</option>${records('students').map(x=>`<option value="${x.id}" ${v===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`;
+ else if(type==='textarea')c=`<textarea name="${k}" ${req?'required':''}>${esc(v||'')}</textarea>`;
+ else if(type.startsWith('select:'))c=`<select name="${k}" ${req?'required':''}><option value="">Seleccionar...</option>${type.slice(7).split(',').map(x=>`<option ${v===x?'selected':''}>${esc(x)}</option>`).join('')}</select>`;
+ else c=`<input name="${k}" type="${type}" value="${esc(v??'')}" ${req?'required':''} ${type==='number'?'step="any"':''}>`;
+ return `<div class="field"><label>${esc(label)}${req?' *':''}</label>${c}</div>`;
+}
+function editor(k,id=null){
+ const sc=schema[k];if(!sc)return;const old=id?records(k).find(x=>x.id===id)||{}:{};
+ const fields=sc.fields.map(f=>{let v=old[f[0]]??'';if(!v&&['date','dueDate'].includes(f[0]))v=today();if(!v&&f[0]==='maxScore')v='10';if(!v&&f[0]==='year')v=new Date().getFullYear();if(!v&&f[0]==='status'&&k==='tasks')v='Pendiente';return fieldHTML(f,v)}).join('');
+ $('modalRoot').innerHTML=`<div class="backdrop" id="backdrop"><div class="modal"><div class="modalhead"><h2>${id?'Editar':'Agregar'} ${esc(sc.title.toLowerCase())}</h2><button id="close" class="secondary small">✕</button></div><form id="recordForm"><div class="modalgrid">${fields}</div><div id="recordError" class="error"></div><div class="modalfoot"><button type="button" id="cancel" class="secondary">Cancelar</button><button type="submit">Guardar</button></div></form></div></div>`;
+ const close=()=> $('modalRoot').innerHTML='';$('close').onclick=$('cancel').onclick=close;$('backdrop').onclick=e=>{if(e.target.id==='backdrop')close()};
+ $('recordForm').onsubmit=async e=>{e.preventDefault();const data={};new FormData(e.target).forEach((v,k)=>data[k]=String(v).trim());
+ for(const f of sc.fields)if(f[2]==='number'&&data[f[0]]!=='')data[f[0]]=Number(data[f[0]]);
+ if(k==='grades'){if(Number(data.maxScore)<=0)return $('recordError').textContent='La nota máxima debe ser mayor que cero.';if(Number(data.score)<0||Number(data.score)>Number(data.maxScore))return $('recordError').textContent='La nota debe estar entre cero y la nota máxima.'}
+ data.updatedAt=firebase.firestore.FieldValue.serverTimestamp();if(!id)data.createdAt=firebase.firestore.FieldValue.serverTimestamp();
+ try{if(id)await col(k).doc(id).set(data,{merge:true});else await col(k).add(data);close();await loadData();render();toast('Registro guardado.')}catch(err){$('recordError').textContent=errorText(err)}
+ };
+}
+async function removeRecord(k,id){const x=records(k).find(o=>o.id===id);if(!confirm(`¿Eliminar "${x?.name||x?.title||'este registro'}"?`))return;try{await col(k).doc(id).delete();await loadData();render();toast('Registro eliminado.')}catch(e){toast(errorText(e))}}
+function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportCSV(k){const a=records(k);if(!a.length)return toast('No hay datos para exportar.');const fields=[...new Set(a.flatMap(Object.keys))].filter(x=>!['id','createdAt','updatedAt'].includes(x));const csv=[fields.join(';'),...a.map(o=>fields.map(f=>'"'+String(o[f]??'').replace(/"/g,'""')+'"').join(';'))].join('\r\n');download('profefacil-'+k+'-'+today()+'.csv','\ufeff'+csv,'text/csv;charset=utf-8')}
+async function backup(){try{await loadData();download('profefacil-respaldo-'+today()+'.json',JSON.stringify({app:'ProfeFácil',version:1,exportedAt:new Date().toISOString(),collections:dbdata},null,2),'application/json');toast('Copia descargada.')}catch(e){toast(errorText(e))}}
+async function restore(){const f=$('restoreFile')?.files?.[0];if(!f)return toast('Selecciona un archivo JSON.');try{const j=JSON.parse(await f.text()),data=j.collections||j;if(!confirm('Se agregarán los registros de la copia a tu cuenta. ¿Continuar?'))return;let total=0;for(const k of keys){if(!Array.isArray(data[k]))continue;for(const item of data[k]){const {id,createdAt,updatedAt,...rest}=item;await col(k).add({...rest,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});total++}}await loadData();render();toast('Importación completada: '+total+' registros.')}catch(e){toast('Error al importar: '+errorText(e))}}
+</script>
+</body>
+</html>
